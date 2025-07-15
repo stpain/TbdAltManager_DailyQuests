@@ -1,0 +1,85 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+https://raw.githubusercontent.com/Meorawr/wow-ui-schema/main/UI.xsd">
+
+
+    <Frame name="TbdAltManagerDailyQuestsListItemTemplate" mixin="TbdAltManagerDailyQuestsListItemMixin" enableMouse="true" virtual="true">
+        <Layers>
+            <Layer level="OVERLAY">
+                <FontString parentKey="Label" inherits="GameFontNormal">
+                    <Anchors>
+                        <Anchor point="LEFT" x="0" y="0"/>
+                    </Anchors>
+                </FontString>
+            </Layer>
+        </Layers>
+<!-- UI-QuestTrackerButton-Collapse-All -->
+        <Scripts>
+            <OnEnter method="OnEnter"/>
+            <OnLeave method="OnLeave"/>
+        </Scripts>
+    </Frame>
+
+    <Frame name="TbdAltManagerDailyQuestTrackingBaseDbListItemTemplate" inherits="TbdAltManagerDailyQuestsListItemTemplate" mixin="TbdAltManagerDailyQuestTrackingBaseDbListItemMixin" virtual="true">
+        <Frames>
+            <Button parentKey="TrackingMenuButton" inherits="UIPanelButtonTemplate" text="Track">
+                <Size x="100" y="22"/>
+                <Anchors>
+                    <Anchor point="RIGHT" x="0" y="0"/>
+                </Anchors>
+            </Button>
+        </Frames>
+        <Scripts>
+            <OnLoad method="OnLoad"/>
+        </Scripts>
+    </Frame>
+
+    <Frame name="TbdAltManagerDailyQuestTrackingAllListItemTemplate" inherits="TbdAltManagerDailyQuestsListItemTemplate" mixin="TbdAltManagerDailyQuestTrackingAllListItemMixin" virtual="true">
+        <Frames>
+            <Button parentKey="RemoveTracking" inherits="UIPanelButtonTemplate" text="Untrack">
+                <Size x="100" y="22"/>
+                <Anchors>
+                    <Anchor point="RIGHT" x="0" y="0"/>
+                </Anchors>
+            </Button>
+        </Frames>
+        <Scripts>
+            <OnLoad method="OnLoad"/>
+        </Scripts>
+    </Frame>
+
+
+
+    <Frame name="TbdAltManagerDailyQuests" mixin="TbdAltManagerDailyQuestsMixin">
+
+        <Frames>
+            <Frame parentKey="QuestList" inherits="TBDTreeviewTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT" x="0" y="0"/>
+                    <Anchor point="BOTTOMLEFT" x="0" y="0"/>
+                </Anchors>
+                <Size x="500"/>
+                <KeyValues>
+                    <KeyValue key="itemTemplate" value="TbdAltManagerDailyQuestTrackingBaseDbListItemTemplate" type="string"/>
+                    <KeyValue key="elementHeight" value="24" type="number"/>
+                </KeyValues>
+            </Frame>
+            <Frame parentKey="TrackedQuestList" inherits="TBDTreeviewTemplate"> <!--InsetFrameTemplate3-->
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeKey="$parent.QuestList" relativePoint="TOPRIGHT" x="0" y="0"/>
+                    <Anchor point="BOTTOMRIGHT" x="0" y="0"/>
+                </Anchors>
+                <Size x="400"/>
+                <KeyValues>
+                    <KeyValue key="itemTemplate" value="TbdAltManagerDailyQuestTrackingAllListItemTemplate" type="string"/>
+                    <KeyValue key="elementHeight" value="24" type="number"/>
+                </KeyValues>
+            </Frame>
+        </Frames>
+
+        <Scripts>
+            <OnLoad method="OnLoad"/>
+            <OnShow method="OnShow"/>
+        </Scripts>
+    </Frame>
+
+</Ui>
