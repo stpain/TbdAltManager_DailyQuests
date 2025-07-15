@@ -1,5 +1,5 @@
 ## Name: TbdAltManager Daily Quests
-## Version: 0.1
+## Version: 0.11
 ## Interface: 110107
 ## Notes: Daily Quests module for TbdAltManager
 ## SavedVariables: TbdAltManager_DailyQuests, TbdAltManager_QuestData, TbdAltManager_QuestTracking
